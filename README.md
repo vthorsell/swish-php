@@ -69,6 +69,22 @@ class Client
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getRefund(string $id): Refund;
+    
+    /**
+     * @param Payout $refund
+     * @return string payout id
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws ValidationException
+     */
+    public function createPayout(Payout $payout): string
+	
+	/**
+     * @param string $id Payout id
+     * @return Payout
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws ValidationException
+     */
+    public function getPayout(string $id): Payout
 }
 ```
 When you have the SSL certificates ready you may instantiate the client:
