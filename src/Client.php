@@ -136,8 +136,8 @@ class Client
 
         return Util::getObjectIdFromResponse($response);
     }
-
-    /**
+	
+	/**
      * @param string $id Refund id
      * @return Refund
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -148,6 +148,36 @@ class Client
         $response = $this->sendRequest('GET', '/refunds/' . $id);
 
         return new Refund(
+            json_decode((string) $response->getBody(), true)
+        );
+    }
+	
+	/**
+     * @param Payout $refund
+     * @return string payout id
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws ValidationException
+     */
+    public function createPayment(Payout $payout): string
+    {
+        $response = $this->sendRequest('POST', '/payouts', [
+            'json' => $this->filterRequestBody((array) $payout),
+        ]);
+
+        return Util::getObjectIdFromResponse($response);
+    }
+	
+	/**
+     * @param string $id Refund id
+     * @return Payout
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws ValidationException
+     */
+    public function getPayment(string $id): Payout
+    {
+        $response = $this->sendRequest('GET', '/payouts/' . $id);
+
+        return new Payout(
             json_decode((string) $response->getBody(), true)
         );
     }
