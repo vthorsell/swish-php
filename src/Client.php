@@ -168,7 +168,7 @@ class Client
     }
 	
 	/**
-     * @param string $id Refund id
+     * @param string $id Payout id
      * @return Payout
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws ValidationException
