@@ -158,7 +158,7 @@ class Client
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws ValidationException
      */
-    public function createPayment(Payout $payout): string
+    public function createPayout(Payout $payout): string
     {
         $response = $this->sendRequest('POST', '/payouts', [
             'json' => $this->filterRequestBody((array) $payout),
@@ -173,7 +173,7 @@ class Client
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws ValidationException
      */
-    public function getPayment(string $id): Payout
+    public function getPayout(string $id): Payout
     {
         $response = $this->sendRequest('GET', '/payouts/' . $id);
 
